@@ -57,7 +57,7 @@ export default function LoginUser() {
 
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const response = await axios.post("http://127.0.0.1:8000/login", {
+        const response = await axios.post("http://127.0.0.1:8000/api/login/", {
           email,
           password,
         });
@@ -66,7 +66,7 @@ export default function LoginUser() {
           sessionStorage.setItem('loginEmail', email);
           toast.success("Login successful");
 
-          navigate("/dashboard");
+          navigate("/prediction");
         }
       } catch (error) {
         toast.error("Login failed: Incorrect credentials or server error");
