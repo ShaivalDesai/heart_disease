@@ -62,8 +62,8 @@ export default function LoginUser() {
           password,
         });
         if (response.status === 200) {
-          sessionStorage.setItem('authenticated', 'true');
-          sessionStorage.setItem('loginEmail', email);
+          sessionStorage.setItem("authenticated", "true");
+          sessionStorage.setItem("loginEmail", email);
           toast.success("Login successful");
 
           navigate("/prediction");
@@ -77,133 +77,124 @@ export default function LoginUser() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-    <ToastContainer />
-    <Grid
-      container
-      component="main"
-      sx={{
-        height: "100vh",
-      }}
-    >
-      <CssBaseline />
+      <ToastContainer />
       <Grid
-        item
-        xs={false}
-        sm={4}
-        md={8}
+        container
+        component="main"
         sx={{
-          backgroundImage: `url("/11.png")`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          height: "100vh",
         }}
-      />
-  
-      <Grid
-        item
-        xs={12}
-        sm={8}
-        md={4}
-        component={Paper}
-        elevation={6}
-        square
-        sx={{ background: "white" }}
       >
-        <Box
+        <CssBaseline />
+        <Grid
+          item
+          xs={false}
+          sm={4}
+          md={8}
           sx={{
-            my: 16, // Increase the vertical margin
-            mx: 4,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+            backgroundImage: `url("/11.png")`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
+        />
+
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={4}
+          component={Paper}
+          elevation={6}
+          square
+          sx={{ background: "white" }}
         >
-          <Avatar
+          <Box
             sx={{
-              m: 1,
-              bgcolor: "#ff595a",
-              height: 65,
-              width: 65,
-              marginTop: "30px",
+              my: 16,
+              mx: 4,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
-            <LockOutlinedIcon fontSize="large" />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Log in
-          </Typography>
-          <Box component="form" noValidate sx={{ mt: 3, width: "100%" }}>
-            <TextField
-              margin="dense" // Change margin to normal
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              InputLabelProps={{
-                style: { color: "black" },
-              }}
-             
-            />
-            <div style={{ color: "red" }}>
-              {errors.email && <span>{errors.email}</span>}
-            </div>
-  
-            <TextField
-              margin="dense" // Change margin to normal
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              onPaste={(e) => e.preventDefault()}
-              onCopy={(e) => e.preventDefault()}
-              InputLabelProps={{
-                style: { color: "black" },
-              }}
-            // Increase bottom margin
-            />
-            <div style={{ color: "red",}}>
-              {errors.password && <span>{errors.password}</span>}
-            </div>
-  
-            <Button
-              fullWidth
-              variant="contained"
+            <Avatar
               sx={{
-                mt: 3,
-                mb: 2,
+                m: 1,
                 bgcolor: "#ff595a",
-                "&:hover": {
-                  bgcolor: "red",
-                },
+                height: 65,
+                width: 65,
+                marginTop: "30px",
               }}
-              onClick={HandleLogin}
             >
-              Login
-            </Button>
-            <Grid
-              container
-              justifyContent="space-between"
-              spacing={2}
-              sx={{ marginTop: "-25px" }}
-            >
-              <Grid item xs>
-                {/* <Link href="#" variant="body2">
-                  Forgot password?
-                </Link> */}
-              </Grid>
+              <LockOutlinedIcon fontSize="large" />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Log in
+            </Typography>
+            <Box component="form" noValidate sx={{ mt: 3, width: "100%" }}>
+              <TextField
+                margin="dense" // Change margin to normal
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                InputLabelProps={{
+                  style: { color: "black" },
+                }}
+              />
+              <div style={{ color: "red" }}>
+                {errors.email && <span>{errors.email}</span>}
+              </div>
+
+              <TextField
+                margin="dense"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+                onPaste={(e) => e.preventDefault()}
+                onCopy={(e) => e.preventDefault()}
+                InputLabelProps={{
+                  style: { color: "black" },
+                }}
+              />
+              <div style={{ color: "red" }}>
+                {errors.password && <span>{errors.password}</span>}
+              </div>
+
+              <Button
+                fullWidth
+                variant="contained"
+                sx={{
+                  mt: 3,
+                  mb: 2,
+                  bgcolor: "#ff595a",
+                  "&:hover": {
+                    bgcolor: "red",
+                  },
+                }}
+                onClick={HandleLogin}
+              >
+                Login
+              </Button>
               <Grid
-                  container
-                  justifyContent="center" 
-                >
+                container
+                justifyContent="space-between"
+                spacing={2}
+                sx={{ marginTop: "-25px" }}
+              >
+                <Grid item xs></Grid>
+                <Grid container justifyContent="center">
                   <Grid item>
                     <Link
                       href="RegisterUser"
@@ -214,12 +205,11 @@ export default function LoginUser() {
                     </Link>
                   </Grid>
                 </Grid>
-            </Grid>
+              </Grid>
+            </Box>
           </Box>
-        </Box>
+        </Grid>
       </Grid>
-    </Grid>
-  </ThemeProvider>
-  
+    </ThemeProvider>
   );
 }

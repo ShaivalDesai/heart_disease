@@ -141,8 +141,6 @@ export default function RegisterUser() {
         component="main"
         sx={{
           height: "100vh",
-          // justifyContent: "flex-end", // Align to the right
-          // alignItems: "center",
         }}
       >
         <CssBaseline />
