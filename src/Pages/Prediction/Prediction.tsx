@@ -137,9 +137,30 @@ const Prediction: React.FC = () => {
                   </Select>
                 </FormControl>
               </Grid>
+              {/* <Grid item xs={6}>
+                <FormControl fullWidth>
+                  <Select
+                    value={formData.cp}
+                    name="cp"
+                    displayEmpty
+                    onChange={handleChange}
+                    fullWidth
+                  >
+                    <MenuItem value="" disabled>
+                      Chest Pain Type
+                    </MenuItem>
+                    <MenuItem value="0">0</MenuItem>
+                    <MenuItem value="1">1</MenuItem>
+                    <MenuItem value="2">2</MenuItem>
+                    <MenuItem value="3">3</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid> */}
+
               <Grid item xs={6}>
                 <FormControl fullWidth>
                   <Select
+                    labelId="cp-label"
                     value={formData.cp}
                     name="cp"
                     displayEmpty
@@ -164,6 +185,9 @@ const Prediction: React.FC = () => {
                   value={formData.trestbps}
                   name="trestbps"
                   onChange={handleChange}
+                  InputLabelProps={{
+                    style: { fontWeight: "bold" },
+                  }}
                 />
               </Grid>
 
@@ -174,6 +198,9 @@ const Prediction: React.FC = () => {
                   value={formData.chol}
                   name="chol"
                   onChange={handleChange}
+                  InputLabelProps={{
+                    style: { fontWeight: "bold" },
+                  }}
                 />
               </Grid>
 
@@ -184,6 +211,9 @@ const Prediction: React.FC = () => {
                   value={formData.fbs}
                   name="fbs"
                   onChange={handleChange}
+                  InputLabelProps={{
+                    style: { fontWeight: "bold" },
+                  }}
                 />
               </Grid>
 
@@ -214,6 +244,9 @@ const Prediction: React.FC = () => {
                   value={formData.mhra}
                   name="mhra"
                   onChange={handleChange}
+                  InputLabelProps={{
+                    style: { fontWeight: "bold" },
+                  }}
                 />
               </Grid>
 
@@ -243,6 +276,9 @@ const Prediction: React.FC = () => {
                   value={formData.oldpeak}
                   name="oldpeak"
                   onChange={handleChange}
+                  InputLabelProps={{
+                    style: { fontWeight: "bold" },
+                  }}
                 />
               </Grid>
 
@@ -306,9 +342,22 @@ const Prediction: React.FC = () => {
                 </FormControl>
               </Grid>
             </Grid>
-            <Button type="submit" variant="contained" color="primary">
-              Submit
-            </Button>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "20px",
+              }}
+            >
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                
+              >
+                Submit
+              </Button>
+            </div>
           </form>
         </Container>
       </div>

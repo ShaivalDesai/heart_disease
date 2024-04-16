@@ -358,7 +358,7 @@ export default function RegisterUser() {
                 <Grid container justifyContent="center">
                   <Grid item>
                     <Link
-                      href="RegisterUser"
+                      href="login"
                       variant="body2"
                       onClick={handleRegisterClick}
                     >
