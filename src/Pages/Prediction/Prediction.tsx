@@ -10,7 +10,7 @@ import {
   Select,
   InputLabel,
   FormControl,
-} from "@mui/material"; // Import TextField and Button from Material-UI
+} from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -48,34 +48,6 @@ const Prediction: React.FC = () => {
     }));
   };
 
-  // const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-
-  //   const storedUserEmail = sessionStorage.getItem("loginEmail");
-
-  //   const updatedFormData = {
-  //     ...formData,
-  //     email: storedUserEmail || formData.email,
-  //   };
-
-  //   try {
-  //     const response = await axios.post(
-  //       "http://127.0.0.1:8000/api/model/",
-  //       updatedFormData
-  //     );
-  //     console.log("Response from server:", response.data); // Log the entire response object
-  //     if (response && response.data) {
-  //       const message = JSON.stringify(response.data);
-  //       alert(message); // Display the message in an alert box
-  //     } else {
-  //       alert("Unknown response from server");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error:", error);
-  //     alert("Error occurred while processing your request");
-  //   }
-  // };
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const storedUserEmail = sessionStorage.getItem("loginEmail");
@@ -93,11 +65,11 @@ const Prediction: React.FC = () => {
       if (response && response.data) {
         const result = parseInt(response.data);
         if (result >= 1 && result < 40) {
-          navigate("/page1");
+          navigate("/page1", { state: { result } });
         } else if (result >= 40 && result < 75) {
-          navigate("/page2");
+          navigate("/page2", { state: { result } });
         } else if (result >= 75 && result <= 100) {
-          navigate("/page3");
+          navigate("/page3", { state: { result } });
         } else {
           alert("Unknown response from server");
         }
@@ -118,7 +90,7 @@ const Prediction: React.FC = () => {
           backgroundImage: `url("/11.png")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          minHeight: "100vh", // Set minimum height to cover the whole viewport
+          minHeight: "100vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -246,13 +218,22 @@ const Prediction: React.FC = () => {
               </Grid>
 
               <Grid item xs={6}>
-                <TextField
-                  fullWidth
-                  label="Exercise induced angina"
-                  value={formData.exang}
-                  name="exang"
-                  onChange={handleChange}
-                />
+                <FormControl fullWidth>
+                  <Select
+                    //   labelId="gender-label"
+                    value={formData.exang}
+                    name="exang"
+                    onChange={handleChange}
+                    displayEmpty
+                    fullWidth
+                  >
+                    <MenuItem value="" disabled>
+                      Exercise induced angina
+                    </MenuItem>
+                    <MenuItem value="0">0</MenuItem>
+                    <MenuItem value="1">1</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
 
               <Grid item xs={6}>
@@ -286,13 +267,23 @@ const Prediction: React.FC = () => {
               </Grid>
 
               <Grid item xs={6}>
-                <TextField
-                  fullWidth
-                  label="Number of major vessel"
-                  value={formData.ca}
-                  name="ca"
-                  onChange={handleChange}
-                />
+                <FormControl fullWidth>
+                  <Select
+                    value={formData.ca}
+                    name="ca"
+                    onChange={handleChange}
+                    displayEmpty
+                    fullWidth
+                  >
+                    <MenuItem value="" disabled>
+                      Number of major vessel
+                    </MenuItem>
+                    <MenuItem value="0">0</MenuItem>
+                    <MenuItem value="1">1</MenuItem>
+                    <MenuItem value="2">2</MenuItem>
+                    <MenuItem value="2">3</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
 
               <Grid item xs={6}>
