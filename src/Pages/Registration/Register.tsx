@@ -111,7 +111,7 @@ export default function RegisterUser() {
 
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const response = await axios.post("http://127.0.0.1:8000/login", {
+        const response = await axios.post(`${process.env.REACT_APP_FAST_API}api/Register/`, {
           Username,
           Fullname,
           Mobile_number,
@@ -124,7 +124,7 @@ export default function RegisterUser() {
         if (response.status === 200) {
           toast.success("Register successful");
 
-          navigate("/dashboard");
+          navigate("/login");
         }
       } catch (error) {
         toast.error("Register failed");

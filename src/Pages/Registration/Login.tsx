@@ -57,7 +57,7 @@ export default function LoginUser() {
 
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const response = await axios.post("http://127.0.0.1:8000/api/login/", {
+        const response = await axios.post( `${process.env.REACT_APP_FAST_API}api/login/`, {
           email,
           password,
         });

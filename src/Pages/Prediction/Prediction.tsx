@@ -58,7 +58,7 @@ const Prediction: React.FC = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/model/",
+        `${process.env.REACT_APP_FAST_API}api/model/`,
         updatedFormData
       );
       console.log("Response from server:", response.data);
@@ -99,7 +99,7 @@ const Prediction: React.FC = () => {
         <Container
           maxWidth="sm" // Adjust the maxWidth to control the width
           style={{
-            backgroundColor: "rgba(255, 255, 255, 0.8)",
+            backgroundColor: "rgba(255, 255, 255, 0.9)",
             padding: "20px",
             borderRadius: "10px",
           }}
