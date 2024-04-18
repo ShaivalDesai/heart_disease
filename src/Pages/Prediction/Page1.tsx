@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import Navbar from "../Registration/Navbar";
-import { useLocation } from "react-router-dom";
+import { useLocation , useNavigate} from "react-router-dom";
 
 interface PhotoDisplayProps {
   src: string; // URL of the image
@@ -11,7 +11,13 @@ interface PhotoDisplayProps {
 
 const Page1: React.FC<PhotoDisplayProps> = ({ src, alt, title }) => {
   const location = useLocation();
+  const navigate = useNavigate(); 
   const result = location.state?.result;
+
+  
+  const goHome = () => {
+    navigate("/prediction"); 
+  };
 
   return (
     <>
@@ -48,6 +54,21 @@ const Page1: React.FC<PhotoDisplayProps> = ({ src, alt, title }) => {
               style={{ width: "260px", height: "250px", borderRadius: "50%" }}
             />
             <p>The probability of heart disease is: {result}%</p>
+            <button
+              onClick={goHome}
+              style={{
+                marginTop: "20px",
+                padding: "10px 20px",
+                fontSize: "16px",
+                cursor: "pointer",
+                borderRadius: "5px",
+                border: "none",
+                backgroundColor: "#4CAF50",
+                color: "white",
+              }}
+            >
+              Go Back
+            </button>
           </div>
         </Container>
       </div>
